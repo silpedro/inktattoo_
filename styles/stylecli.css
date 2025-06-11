@@ -1,0 +1,281 @@
+body {
+    margin: 0;
+    font-family: Lato;
+    color: #000;
+    overflow: hidden;
+}
+
+.main-wrapper {
+    display: flex;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.left-panel {
+    flex: 1;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.right-panel {
+    flex: 1;
+    background-image: url('../assets/images/tatuadora.svg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.back-to-login {
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    font-size: 0.9em;
+    color: #333;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.back-to-login:hover {
+    text-decoration: underline;
+    color: #007bff;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 550px;
+}
+
+.cadastro-box {
+    background-color: transparent;
+    backdrop-filter: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+    text-align: left;
+    width: 100%;
+    max-width: 480px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cadastro-box .sub-title {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: left;
+    width: 100%;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.cadastro-box .sub-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #007bff;
+}
+
+.tat-forms {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label-text {
+    font-size: 0.9em;
+    color: #555;
+    text-align: left;
+    width: 100%;
+    max-width: 380px;
+    margin-bottom: 5px;
+    margin-top: 15px;
+}
+
+.label-input {
+    display: flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    width: 100%;
+    max-width: 380px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.label-input .input-field {
+    flex-grow: 1;
+    background: none;
+    border: none;
+    outline: none;
+    color: #333;
+    font-size: 1em;
+    padding: 0;
+}
+
+.label-input .input-field::placeholder {
+    color: #999;
+}
+
+.senha {
+    width: 100%;
+    max-width: 380px;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.senha ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin: 0;
+}
+
+.senha li {
+    font-size: 0.85em;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.cad-nome-tat, .cad-senha-tat {
+    display: inline-block;
+    margin-right: 10px;
+    color: #999;
+    font-size: 1.2em;
+}
+
+.tel-input {
+    justify-content: flex-start;
+}
+
+.tel-input .prefix {
+    font-size: 1em;
+    color: #333;
+    margin-right: 5px;
+}
+
+.tipo-usuario {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 20px 0 40px;
+    width: 100%;
+    max-width: 380px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1em;
+    color: #555;
+}
+
+.radio-label input[type="radio"] {
+    margin-right: 8px;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #999;
+    border-radius: 50%;
+    background-color: #eee;
+    position: relative;
+    outline: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.radio-label input[type="radio"]:checked {
+    background-color: #000;
+    border-color: #000;
+}
+
+.radio-label input[type="radio"]:checked::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.registro {
+    background-color: #4472C4;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    width: 100%;
+    max-width: 380px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.registro:hover {
+    background-color: #365B9C;
+}
+
+.separator {
+    width: 100%;
+    max-width: 380px;
+    height: 1px;
+    background-color: #ccc;
+    margin: 30px 0;
+    border-style: dashed;
+    border-color: #007bff;
+    background: none;
+}
+
+.label-input.date-fields {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+.label-input.date-fields .input-field {
+    flex: 1;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    color: #333;
+}
+.label-input.date-fields .input-field::placeholder {
+    color: #999;
+}
+
+.label-input.date-fields .date-month {
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23999%22%20d%3D%22M287%2C197.6L146.2%2C56.9%2C5.4%2C197.6h281.6z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+    padding-right: 30px;
+}

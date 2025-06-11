@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>INK AGENDA - Cadastro</title>
+    <link rel="stylesheet" href="./styles/stylecli.css">
+    <link href="https://fonts.googleapis.com/css2?family=Karantina:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-wrapper">
+        <div class="left-panel">
+            <a href="index.html" class="back-to-login"> < voltar a tela de login</a>
+
+            <div class="container">
+                <div class="cadastro-box">
+                    <h2 class="sub-title">Cadastre-se</h2>
+
+                    <form class="tat-forms">
+                        <p class="label-text">Seu nome</p>
+                        <label class="label-input">
+                            <i class="cad-nome-tat"></i>
+                            <input type="text" placeholder="Ex. Mateus Zeferino" class="input-field" id="nome">
+                        </label>
+                        
+                        <p class="label-text">Sua senha</p>
+                        <label class="label-input">
+                            <i class="cad-senha-tat"></i>
+                            <input type="password" placeholder="Sua senha" class="input-field" id="senha">
+                        </label>
+                        <div class="senha">
+                            <ul>
+                                <li>Mínimo de 8 letras</li>
+                                <li>Utilize letras e números</li>
+                                <li>Pelo menos um caracter especial</li>
+                                <li>Ao menos uma letra minúscula e uma maiúscula</li>
+                            </ul>
+                        </div>
+
+                        <div class="separator"></div>
+
+                        <p class="label-text">Data de nascimento</p>
+                        <label class="label-input">
+                            <input type="date" class="input-field" id="data-nascimento">
+                            </label>
+                        
+                        <p class="label-text">Telefone</p>
+                        <label class="label-input tel-input">
+                            <span class="prefix">+55</span>
+                            <input type="text" placeholder="Número" class="input-field" id="telefone">
+                        </label>
+                        
+                        <div class="tipo-usuario">
+                            <label class="radio-label">
+                                <input type="radio" name="user_type" value="tatuador"> Sou tatuador
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="user_type" value="cliente" checked> Sou cliente
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="registro">CADASTRAR</button>
+
+                        </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-panel">
+        </div>
+    </div>
+</body>
+</html>
