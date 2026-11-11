@@ -1,4 +1,4 @@
-body {
+﻿body {
     margin: 0;
     font-family: Lato;
     color: #000;
@@ -25,7 +25,7 @@ body {
 
 .right-panel {
     flex: 1;
-    background-image: url('../assets/images/tatuadora.svg');
+    background-image: url('../assets/images/tatuadora.webp');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
