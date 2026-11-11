@@ -1,0 +1,488 @@
+/* ==========================================================================
+   INK AGENDA - estilos únicos (login e cadastros)
+   Organização: variáveis > base > componentes > página de login > página de cadastro > responsivo
+   ========================================================================== */
+
+/* ---------- Variáveis ---------- */
+:root {
+    --fonte: 'Lato', Arial, sans-serif;
+    --fonte-titulo: 'Karantina', cursive;
+
+    --texto: #1f1f1f;
+    --texto-suave: #555;
+    --texto-dica: #666;           /* contraste 5,7:1 sobre branco */
+    --placeholder: #6b6b6b;       /* contraste mínimo de 4,5:1 sobre branco e sobre cinza claro */
+
+    --acao: #0069d9;              /* botões principais (contraste 5,4:1 com texto branco) */
+    --acao-hover: #0053ad;
+    --sucesso: #2e7d32;           /* botão Entrar (contraste 5,1:1 com texto branco) */
+    --sucesso-hover: #256628;
+    --erro: #b3261e;
+    --foco: #ffb703;              /* anel de foco visível no teclado */
+
+    --campo-fundo: #f0f0f0;
+    --campo-borda: #cfcfcf;
+    --raio: 8px;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--fonte);
+    color: var(--texto);
+}
+
+/* O foco do teclado nunca é removido: ele precisa ser visível */
+:focus-visible {
+    outline: 3px solid var(--foco);
+    outline-offset: 2px;
+}
+
+/* ---------- Botões (links e botões com o mesmo visual) ---------- */
+.registro,
+.login-btn {
+    display: block;
+    width: 100%;
+    max-width: 350px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: var(--raio);
+    color: #fff;
+    font: inherit;
+    font-size: 1.1em;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.registro {
+    background-color: var(--acao);
+}
+
+.registro:hover {
+    background-color: var(--acao-hover);
+}
+
+.registro + .registro {
+    margin-top: 18px;
+}
+
+.login-btn {
+    background-color: var(--sucesso);
+    margin-top: 20px;
+}
+
+.login-btn:hover {
+    background-color: var(--sucesso-hover);
+}
+
+/* ==========================================================================
+   Página de login (index.html)
+   ========================================================================== */
+.pagina-login {
+    min-height: 100vh;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #12294a url('../assets/images/bg.webp') center / cover no-repeat;
+    color: #fff;
+}
+
+.pagina-login .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.main-title {
+    margin: 0 0 5px;
+    font-family: var(--fonte-titulo);
+    font-size: 3.5em;
+    letter-spacing: 4px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.main-slogan {
+    margin: 0 0 40px;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+/* Caixa de vidro: o tom escuro garante contraste do texto sobre a foto */
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 425px;
+    padding: 40px;
+    background-color: rgba(10, 22, 48, 0.45);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    text-align: center;
+}
+
+.login form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-forms {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--raio);
+}
+
+.login-forms .icon {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.login-forms input {
+    flex-grow: 1;
+    min-width: 0;
+    padding: 5px 8px;
+    background-color: #fff;
+    border: none;
+    border-radius: 4px;
+    color: var(--texto);
+    font: inherit;
+}
+
+.login-forms input::placeholder,
+.input-field::placeholder {
+    color: var(--placeholder);
+}
+
+.opcoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+.opcoes label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.opcoes input[type="checkbox"] {
+    appearance: none;
+    position: relative;
+    width: 18px;
+    height: 18px;
+    margin: 0 6px 0 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.opcoes input[type="checkbox"]:checked {
+    background-color: var(--sucesso);
+    border-color: var(--sucesso);
+}
+
+.opcoes input[type="checkbox"]:checked::after {
+    content: '✔';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    color: #fff;
+}
+
+.opcoes a {
+    color: #bfe3f5;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.opcoes a:hover {
+    color: #fff;
+}
+
+.pagina-login .separator {
+    width: 100%;
+    max-width: 350px;
+    height: 1px;
+    margin: 30px 0;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.sem-conta {
+    margin: 0 0 15px;
+}
+
+/* ==========================================================================
+   Páginas de cadastro (cad_cliente.html e cad_tatuador.html)
+   ========================================================================== */
+.pagina-cadastro {
+    background: #fff;
+}
+
+.main-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.left-panel {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 72px 20px 40px;
+    background-color: #fff;
+}
+
+.right-panel {
+    flex: 1;
+    background: #0e3a5c url('../assets/images/tatuadora.webp') center / cover no-repeat;
+}
+
+.back-to-login {
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+    color: #333;
+    text-decoration: none;
+}
+
+.back-to-login:hover {
+    color: var(--acao);
+    text-decoration: underline;
+}
+
+.pagina-cadastro .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 550px;
+}
+
+.cadastro-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 480px;
+    text-align: left;
+}
+
+.cadastro-box .sub-title {
+    position: relative;
+    width: 100%;
+    margin: 0 0 30px;
+    padding-bottom: 5px;
+    font-size: 2em;
+    color: #333;
+}
+
+.cadastro-box .sub-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--acao);
+}
+
+.tat-forms {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.label-text {
+    width: 100%;
+    max-width: 380px;
+    margin: 15px 0 5px;
+    font-size: 0.9em;
+    color: var(--texto-suave);
+    text-align: left;
+}
+
+.label-input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 380px;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    background-color: var(--campo-fundo);
+    border: 1px solid var(--campo-borda);
+    border-radius: var(--raio);
+}
+
+.label-input .input-field {
+    flex-grow: 1;
+    min-width: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    color: #333;
+    font: inherit;
+}
+
+/* O anel de foco aparece na caixa inteira quando o campo interno recebe foco */
+.label-input:focus-within {
+    outline: 3px solid var(--foco);
+    outline-offset: 2px;
+}
+
+.label-input .input-field:focus-visible {
+    outline: none;
+}
+
+.tel-input .prefix {
+    margin-right: 5px;
+    color: #333;
+}
+
+.password-requirements {
+    width: 100%;
+    max-width: 380px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.password-requirements ul {
+    margin: 0;
+    padding-left: 20px;
+    list-style: disc;
+}
+
+.password-requirements li {
+    margin-bottom: 5px;
+    font-size: 0.85em;
+    color: var(--texto-dica);
+}
+
+.user-type-selection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    max-width: 380px;
+    margin: 20px 0 40px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    color: var(--texto-suave);
+    cursor: pointer;
+}
+
+.radio-label input[type="radio"] {
+    appearance: none;
+    position: relative;
+    width: 18px;
+    height: 18px;
+    margin: 0 8px 0 0;
+    background-color: #eee;
+    border: 2px solid #8a8a8a;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.radio-label input[type="radio"]:checked {
+    background-color: #000;
+    border-color: #000;
+}
+
+.radio-label input[type="radio"]:checked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pagina-cadastro .registro {
+    max-width: 380px;
+    margin-top: 20px;
+}
+
+.pagina-cadastro .separator {
+    width: 100%;
+    max-width: 380px;
+    height: 0;
+    margin: 30px 0;
+    border: 0;
+    border-top: 2px dashed var(--acao);
+}
+
+/* ==========================================================================
+   Responsivo
+   ========================================================================== */
+
+/* Tablets e celulares: a foto some e o formulário ocupa a tela toda */
+@media (max-width: 900px) {
+    .right-panel {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 2.6em;
+    }
+
+    .main-slogan {
+        margin-bottom: 28px;
+        font-size: 1.05em;
+    }
+
+    .login {
+        padding: 28px 20px;
+    }
+
+    .back-to-login {
+        left: 20px;
+    }
+
+    .cadastro-box .sub-title {
+        font-size: 1.7em;
+    }
+}
