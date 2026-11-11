@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Testes de validação</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 760px; margin: 24px auto; padding: 0 16px; }
+        .ok { color: #1b6e2a; }
+        .falhou { color: #b3261e; font-weight: bold; }
+        h1.resumo-ok { color: #1b6e2a; }
+        h1.resumo-falhou { color: #b3261e; }
+    </style>
+</head>
+<body>
+    <h1 id="resumo">Testes de validação</h1>
+    <ul id="lista"></ul>
+
+    <script src="../scripts/validacao.js"></script>
+    <script>
+        (function () {
+            'use strict';
+            var V = window.InkValidacao;
+            var total = 0;
+            var falhas = 0;
+
+            // Compara o valor obtido com o esperado (objetos pelo JSON) e anota o resultado na página.
+            function testar(descricao, obtido, esperado) {
+                total += 1;
+                var passou = JSON.stringify(obtido) === JSON.stringify(esperado);
+                if (!passou) { falhas += 1; }
+                var li = document.createElement('li');
+                li.className = passou ? 'ok' : 'falhou';
+                li.textContent = (passou ? 'OK     ' : 'FALHOU ') + descricao +
+                    (passou ? '' : ' | obtido: ' + JSON.stringify(obtido) + ' | esperado: ' + JSON.stringify(esperado));
+                document.getElementById('lista').appendChild(li);
+            }
+
+            var hoje = new Date(2026, 10, 11); // 11/11/2026 (o mês começa em zero)
+
+            // Senha
+            testar('senha forte atende a tudo', V.senhaValida('Abcdef1!'), true);
+            testar('senha curta não atende', V.senhaValida('Ab1!'), false);
+            testar('senha sem número não atende', V.senhaValida('Abcdefg!'), false);
+            testar('senha sem caractere especial não atende', V.senhaValida('Abcdefg1'), false);
+            testar('senha sem maiúscula não atende', V.senhaValida('abcdef1!'), false);
+            testar('senha sem minúscula não atende', V.senhaValida('ABCDEF1!'), false);
+            testar('espaço não conta como caractere especial', V.requisitosSenha('Abcdef1 ').especial, false);
+            testar('letra acentuada conta como letra', V.requisitosSenha('Ção12345').letrasENumeros, true);
+            testar('senha vazia não atende a nada',
+                V.requisitosSenha(''), { tamanho: false, letrasENumeros: false, especial: false, maiusculaEMinuscula: false });
+
+            // Máscara de telefone
+            testar('máscara: vazio', V.mascararTelefone(''), '');
+            testar('máscara: 1 dígito', V.mascararTelefone('1'), '(1');
+            testar('máscara: DDD', V.mascararTelefone('11'), '(11');
+            testar('máscara: parcial', V.mascararTelefone('1191'), '(11) 91');
+            testar('máscara: celular completo', V.mascararTelefone('11912345678'), '(11) 91234-5678');
+            testar('máscara: fixo completo', V.mascararTelefone('1123456789'), '(11) 2345-6789');
+            testar('máscara: ignora letras e símbolos', V.mascararTelefone('(11) 9a1234-5678'), '(11) 91234-5678');
+            testar('máscara: corta o excesso', V.mascararTelefone('119123456789999'), '(11) 91234-5678');
+
+            // Validade do telefone
+            testar('telefone: celular válido', V.telefoneValido('(11) 91234-5678'), true);
+            testar('telefone: fixo válido', V.telefoneValido('(11) 2345-6789'), true);
+            testar('telefone: celular sem o 9', V.telefoneValido('(11) 81234-5678'), false);
+            testar('telefone: DDD começando em 0', V.telefoneValido('(01) 91234-5678'), false);
+            testar('telefone: curto demais', V.telefoneValido('(11) 1234-567'), false);
+            testar('telefone: vazio', V.telefoneValido(''), false);
+
+            // E-mail
+            testar('e-mail: comum', V.emailValido('ana@exemplo.com'), true);
+            testar('e-mail: com espaços nas pontas', V.emailValido('  ana@exemplo.com  '), true);
+            testar('e-mail: sem arroba', V.emailValido('anaexemplo.com'), false);
+            testar('e-mail: sem domínio', V.emailValido('ana@'), false);
+            testar('e-mail: sem ponto no domínio', V.emailValido('ana@exemplo'), false);
+            testar('e-mail: com espaço no meio', V.emailValido('ana souza@exemplo.com'), false);
+
+            // Data de nascimento
+            testar('data: válida', V.erroDaData('1990-05-20', hoje), '');
+            testar('data: hoje é permitido', V.erroDaData('2026-11-11', hoje), '');
+            testar('data: amanhã é futuro', V.erroDaData('2026-11-12', hoje), 'A data de nascimento não pode ser no futuro.');
+            testar('data: 30 de fevereiro não existe', V.erroDaData('2001-02-30', hoje), 'Informe uma data válida.');
+            testar('data: 29 de fevereiro de ano bissexto', V.erroDaData('2000-02-29', hoje), '');
+            testar('data: antes de 1900', V.erroDaData('1899-12-31', hoje), 'Informe uma data a partir de 1900.');
+            testar('data: vazia', V.erroDaData('', hoje), 'Informe a data de nascimento.');
+            testar('data: formato errado', V.erroDaData('20/05/1990', hoje), 'Informe uma data válida.');
+            testar('hojeISO usa o dia local', V.hojeISO(new Date(2026, 0, 5)), '2026-01-05');
+
+            var resumo = document.getElementById('resumo');
+            resumo.textContent = falhas === 0
+                ? 'Testes de validação: OK ' + total + '/' + total
+                : 'Testes de validação: FALHOU ' + falhas + ' de ' + total;
+            resumo.className = falhas === 0 ? 'resumo-ok' : 'resumo-falhou';
+            document.title = resumo.textContent;
+        })();
+    </script>
+</body>
+</html>

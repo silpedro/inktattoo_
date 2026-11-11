@@ -70,14 +70,16 @@
                                 <input type="password" class="input-field" id="senha" name="senha"
                                        placeholder="Crie uma senha" autocomplete="new-password"
                                        aria-describedby="requisitos-senha" minlength="8" required>
+                                <button type="button" class="mostrar-senha" id="mostrar-senha"
+                                        aria-controls="senha" aria-pressed="false">Mostrar</button>
                             </div>
                         </div>
                         <div class="password-requirements" id="requisitos-senha">
                             <ul>
-                                <li>Mínimo de 8 caracteres</li>
-                                <li>Utilize letras e números</li>
-                                <li>Pelo menos um caractere especial</li>
-                                <li>Ao menos uma letra minúscula e uma maiúscula</li>
+                                <li data-regra="tamanho">Mínimo de 8 caracteres<span class="sr-only estado"></span></li>
+                                <li data-regra="letrasENumeros">Utilize letras e números<span class="sr-only estado"></span></li>
+                                <li data-regra="especial">Pelo menos um caractere especial<span class="sr-only estado"></span></li>
+                                <li data-regra="maiusculaEMinuscula">Ao menos uma letra minúscula e uma maiúscula<span class="sr-only estado"></span></li>
                             </ul>
                         </div>
 
@@ -112,6 +114,8 @@
         <div class="right-panel" aria-hidden="true"></div>
     </div>
 
+    <script src="./scripts/validacao.js"></script>
+    <script src="./scripts/comum.js"></script>
     <script src="./scripts/cadastro.js"></script>
 </body>
 </html>

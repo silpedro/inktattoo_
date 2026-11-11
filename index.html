@@ -15,22 +15,35 @@
         <h1 class="main-title">INK AGENDA</h1>
         <p class="main-slogan">Faça login para acessar o sistema</p>
 
-        <div class="login"> <form>
-                <div class="login-forms">
-                    <span class="icon" aria-hidden="true">👤</span>
-                    <input type="text" placeholder="Nome de usuário ou e-mail">
+        <div class="login">
+            <form id="form-login">
+                <div class="campo">
+                    <label class="sr-only" for="usuario">Nome de usuário ou e-mail</label>
+                    <div class="login-forms">
+                        <span class="icon" aria-hidden="true">👤</span>
+                        <input type="text" id="usuario" name="usuario" placeholder="Nome de usuário ou e-mail"
+                               autocomplete="username" required>
+                    </div>
                 </div>
-                <div class="login-forms">
-                    <span class="icon" aria-hidden="true">🔒</span>
-                    <input type="password" placeholder="Senha">
+                <div class="campo">
+                    <label class="sr-only" for="senha-login">Senha</label>
+                    <div class="login-forms">
+                        <span class="icon" aria-hidden="true">🔒</span>
+                        <input type="password" id="senha-login" name="senha" placeholder="Senha"
+                               autocomplete="current-password" required>
+                        <button type="button" class="mostrar-senha" id="mostrar-senha-login"
+                                aria-controls="senha-login" aria-pressed="false">Mostrar</button>
+                    </div>
                 </div>
 
                 <div class="opcoes">
                     <label>
-                        <input type="checkbox"> Lembrar-me
+                        <input type="checkbox" id="lembrar" name="lembrar"> Lembrar-me
                     </label>
-                    <a href="#">Esqueci minha senha</a>
+                    <a href="#" id="esqueci-senha">Esqueci minha senha</a>
                 </div>
+
+                <p class="aviso" id="aviso-login" role="status" hidden></p>
 
                 <button type="submit" class="login-btn">Entrar</button>
             </form>
@@ -42,5 +55,8 @@
             <a class="registro" href="./cadastro.html?tipo=cliente">CADASTRE-SE COMO CLIENTE</a>
         </div>
     </main>
+
+    <script src="./scripts/comum.js"></script>
+    <script src="./scripts/login.js"></script>
 </body>
 </html>
