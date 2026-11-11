@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>INK AGENDA - Cadastro</title>
+    <link rel="stylesheet" href="./styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Karantina:wght@300;400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="pagina-cadastro">
+    <div class="main-wrapper">
+        <main class="left-panel">
+            <a href="index.html" class="back-to-login">&lt; voltar à tela de login</a>
+
+            <div class="container">
+                <div class="cadastro-box">
+                    <h1 class="sub-title">Cadastre-se</h1>
+
+                    <form class="tat-forms" id="form-cadastro">
+                        <fieldset class="tipo-conta">
+                            <legend class="label-text">Tipo de conta</legend>
+                            <div class="user-type-selection">
+                                <label class="radio-label">
+                                    <input type="radio" name="tipo" value="cliente" checked> Sou cliente
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="tipo" value="tatuador"> Sou tatuador
+                                </label>
+                            </div>
+                        </fieldset>
+
+                        <div class="campo">
+                            <label class="label-text" for="nome">Nome completo</label>
+                            <div class="label-input">
+                                <input type="text" class="input-field" id="nome" name="nome"
+                                       placeholder="Ex. Ana Souza" autocomplete="name" required>
+                            </div>
+                        </div>
+
+                        <div class="campo" data-somente="tatuador">
+                            <label class="label-text" for="apelido">Apelido (opcional)</label>
+                            <div class="label-input">
+                                <input type="text" class="input-field" id="apelido" name="apelido"
+                                       placeholder="Ex. Nickotatto, Manuzzink" autocomplete="nickname">
+                            </div>
+                        </div>
+
+                        <div class="campo" data-somente="tatuador">
+                            <label class="label-text" for="estudio">Estúdio em que você tatua</label>
+                            <div class="label-input">
+                                <input type="text" class="input-field" id="estudio" name="estudio"
+                                       placeholder="Nome do estúdio" autocomplete="organization">
+                            </div>
+                        </div>
+
+                        <div class="campo">
+                            <label class="label-text" for="email">E-mail</label>
+                            <div class="label-input">
+                                <input type="email" class="input-field" id="email" name="email"
+                                       placeholder="voce@exemplo.com" autocomplete="email" required>
+                            </div>
+                        </div>
+
+                        <div class="campo">
+                            <label class="label-text" for="senha">Senha</label>
+                            <div class="label-input">
+                                <input type="password" class="input-field" id="senha" name="senha"
+                                       placeholder="Crie uma senha" autocomplete="new-password"
+                                       aria-describedby="requisitos-senha" minlength="8" required>
+                            </div>
+                        </div>
+                        <div class="password-requirements" id="requisitos-senha">
+                            <ul>
+                                <li>Mínimo de 8 caracteres</li>
+                                <li>Utilize letras e números</li>
+                                <li>Pelo menos um caractere especial</li>
+                                <li>Ao menos uma letra minúscula e uma maiúscula</li>
+                            </ul>
+                        </div>
+
+                        <div class="separator"></div>
+
+                        <div class="campo">
+                            <label class="label-text" for="data-nascimento">Data de nascimento</label>
+                            <div class="label-input">
+                                <input type="date" class="input-field" id="data-nascimento"
+                                       name="data_nascimento" autocomplete="bday" required>
+                            </div>
+                        </div>
+
+                        <div class="campo">
+                            <label class="label-text" for="telefone">Telefone com DDD</label>
+                            <div class="label-input tel-input">
+                                <span class="prefix" aria-hidden="true">+55</span>
+                                <input type="tel" class="input-field" id="telefone" name="telefone"
+                                       placeholder="(11) 91234-5678" autocomplete="tel-national"
+                                       inputmode="tel" required>
+                            </div>
+                        </div>
+
+                        <p class="aviso" id="aviso-demo" role="status" hidden></p>
+
+                        <button type="submit" class="registro">CADASTRAR</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <div class="right-panel" aria-hidden="true"></div>
+    </div>
+
+    <script src="./scripts/cadastro.js"></script>
+</body>
+</html>

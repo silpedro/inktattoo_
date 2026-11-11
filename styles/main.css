@@ -328,6 +328,7 @@ body {
 }
 
 .label-text {
+    display: block;
     width: 100%;
     max-width: 380px;
     margin: 15px 0 5px;
@@ -371,6 +372,46 @@ body {
 .tel-input .prefix {
     margin-right: 5px;
     color: #333;
+}
+
+/* Quem usa o atributo hidden precisa que ele vença o display dos componentes */
+[hidden] {
+    display: none !important;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.tipo-conta {
+    width: 100%;
+    max-width: 380px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.tipo-conta .label-text {
+    padding: 0;
+}
+
+.tipo-conta .user-type-selection {
+    margin: 5px 0 10px;
+}
+
+.aviso {
+    width: 100%;
+    max-width: 380px;
+    margin: 10px 0 0;
+    padding: 10px 14px;
+    background-color: #e8f1fc;
+    border-left: 4px solid var(--acao);
+    border-radius: 4px;
+    color: #123a6b;
+    font-size: 0.9em;
 }
 
 .password-requirements {
