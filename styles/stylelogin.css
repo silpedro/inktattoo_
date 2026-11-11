@@ -1,6 +1,6 @@
-﻿body {
+body {
     margin: 0;
-    font-family: Arial, sans-serif; /* Fallback caso 'Karantina' não carregue para o corpo */
+    font-family: 'Lato', Arial, sans-serif;
     display: flex;
     flex-direction: column; /* Para empilhar o título/slogan e a caixa de login */
     justify-content: center; /* Centraliza todo o conteúdo verticalmente */
@@ -195,4 +195,16 @@
 
 .registro:hover {
     background-color: #0056b3;
+}
+
+/* Links com aparência de botão (cadastros) */
+a.registro {
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+}
+
+a.registro + a.registro {
+    margin-top: 18px;
 }
